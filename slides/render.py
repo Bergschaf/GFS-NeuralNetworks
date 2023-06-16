@@ -51,5 +51,5 @@ for name in scripts_name:
     os.system(
         f"manim render {os.path.join(SCRIPTS_DIR, name)}.py --format png -o {os.path.join(IMAGES_DIR, name)}/Slide_ --fps 1")
 
-if os.path.exists(os.path.join(SLIDES_ROOT_DIR, "media")):
-    os.system(f"rm -rf {os.path.join(SLIDES_ROOT_DIR, 'media')}")
+#if os.path.exists(os.path.join(SLIDES_ROOT_DIR, "media")):
+#    os.system(f"rm -rf {os.path.join(SLIDES_ROOT_DIR, 'media')}")
