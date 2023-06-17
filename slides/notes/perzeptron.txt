@@ -1,0 +1,34 @@
+Grundbaustein von Neuronalen Netzwerken: Perzeptron bzw Neuron
+
+links: Eingaben, z.B. Pixelwerte eines Bildes oder Ausgaben eines anderen Neurons
+
+Diese Eingaben werden gewichtet und aufsummiert
+manche Eingaben sind "wichtiger" als andere
+SUmme aller gewichteten Eingaben = Netzeingabe
+Ausgabe: Aktivierungsfunktion (z.B. Sigmoidfunktion) von Netzeingabe
+
+#---
+
+Formal ausgedrückt:
+Netzeingabe net_j ist die Summe von allen Eingaben x_i multipliziert mit dem jeweiligen Gewicht w_i
+Summe Symbol bedeutet, dass Zählvariable unten (hier i) von Startwert bis  Endwert (hier n) läuft und Summe berechnet wird
+
+#---
+
+Die Ausgabe wird mit der Aktivierungsfunktion berechnet
+zB Sigmoidfunktion
+
+#---
+
+Man sieht Graph von Sigmoid Funktion
+Sie gibt Werte von 0 bis 1 aus
+
+Wichtig ist dass Aktivierungsfunktion nicht linear ist
+
+Außerdem muss Aktivierungsfunktion differenzierbar sein
+d.h. man muss die Ableitung berechnen können
+
+#---
+
+Solche Neuronen werden dann in Schichten angeordnet
+ausgabe einer Schicht ist Eingabe der nächsten Schicht

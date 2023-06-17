@@ -4,7 +4,7 @@ from manim import *
 import math
 
 LINE_THICKNESS = 2
-STRUCTURE = [2, 4, 6, 2]
+STRUCTURE = [2, 4, 4, 2]
 
 
 class Scene(ThreeDScene):
@@ -34,3 +34,5 @@ class Scene(ThreeDScene):
             (neurons_Group[1].get_x() + neurons_Group[2].get_x()) / 2).set_color(YELLOW))
         self.add(Text("Ouput\nLayer").to_edge(UP).set_x(neurons_Group[-1].get_x()).set_color(BLUE))
         self.add(network_group)
+        self.wait(1)
+

@@ -34,6 +34,7 @@ def get_surface_cords(u, v):
 
 class S0(ThreeDScene):
     def construct(self):
+
         self.begin_ambient_camera_rotation(rate = 0.5)
         self.set_camera_orientation(phi=70 * DEGREES, theta=180 * DEGREES, zoom=2.5)
 
