@@ -1,10 +1,18 @@
 from manim import *
 
 POINTS = [
-    (0, 0, 0),
-    (1, 1, 1),
-    (0, 1, 0),
-    (1, 0, 0),
+    (0, 0, 0.1),
+    (0, 0.2, 0.1),
+    (0, 1, 0.15),
+    # (0, 1, 0),
+    (0.2, 0.2, 0.2),
+    (0.7, 0.8, 0.4),
+    (0.8, 0.65, 0.4),
+    (1, 0, 0.4),
+    (0.2, 1, 0.2),
+    (0.6, 0.35, 0.2),
+    (0.4, 0.55, -0.1),
+    (0.7, 0.3, 0.17)
 ]
 
 
@@ -14,23 +22,50 @@ def surface_function(u, v):
         return POINTS[dist_to_points.index(0)][2]
     else:
         # weigh the distance to the points
-        weights = [pow(1 / d, 2) for d in dist_to_points]
+        weights = [pow(1 / d, 3) for d in dist_to_points]
         weights_sum = sum(weights)
         weights = [w / weights_sum for w in weights]
-        print(weights)
         return sum([w * p[2] for w, p in zip(weights, POINTS)])
+
+
+def get_surface_cords(u, v):
+    return np.array([(u - 0.5) * 4, (v - 0.5) * 4, surface_function(u, v) * 4 - 0.55])
 
 
 class S0(ThreeDScene):
     def construct(self):
-        self.begin_ambient_camera_rotation(rate=0.5)
-        self.set_camera_orientation(phi=75 * DEGREES, theta=-45 * DEGREES)
+        self.begin_ambient_camera_rotation(rate = 0.5)
+        self.set_camera_orientation(phi=70 * DEGREES, theta=180 * DEGREES, zoom=2.5)
+
         graph = ThreeDAxes(x_range=[-4, 4], y_range=[-4, 4], z_range=[-4, 4], x_length=8, y_length=8, z_length=8)
-        self.add(graph)
+        #+self.add(graph)
         surface = Surface(
             lambda u, v: np.array([
                 u,  # x
                 v,  # y
                 surface_function(u, v)  # z
-            ])).scale(4)
+            ]), resolution=(10,10)).scale(4)
+        surface.set_fill_by_value(axis=2, colors=[(BLUE, -0.4), (GREEN, -0.10), (RED, 1)], axes=graph)
         self.add(surface)
+        # position the surface at the origin
+        surface.move_to(ORIGIN)
+
+        self.wait(1)
+
+        x_axis = Arrow3D(LEFT * 2, RIGHT * 2).shift(UP * 2.2)
+        x_axis_label = Text("Param 1").scale(0.5).next_to(x_axis, UP * 0.5)
+        self.add(x_axis)
+        self.add(x_axis_label)
+
+        y_axis = Arrow3D(UP * 2, DOWN * 2).shift(LEFT * 2.2)
+        y_axis_label = Text("Param 2").scale(0.5).rotate(-PI / 2).next_to(y_axis, LEFT * 0.5)
+        self.add(y_axis)
+        self.add(y_axis_label)
+
+        #self.remove(surface)
+        self.wait(1)
+
+        point = Dot3D(get_surface_cords(0.67, 0.75), color=YELLOW, radius=0.05)
+
+        self.add(point)
+        self.wait(1)
