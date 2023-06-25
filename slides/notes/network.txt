@@ -11,3 +11,16 @@ Der Input wird durch die Gewichtungen der Hidden Layer verarbeitet
 Die Neuronen ganz Rechts im Output Layer sind die Ausgabeneuronen
 z.B. die Wahrscheinlichkeit, dass das Bild eine Katze zeigt
 
+#---
+
+Um ein Neuronales Netzwerk zu trainieren, müssen die Gewichtungen angepasst werden
+Die Gewichtungen sind anfangs zufällig -> Ausgaben sind zufällig
+
+Um das Netzwerk "besser" zu machen muss man zuerst definieren, was "besser" bedeutet
+
+#---
+
+Dazu braucht man "Trainingsdaten" -> Eingaben in das Netz, bei denen man die erwartete Ausgabe kennt
+z.B. Bilder, von denen man weiß, ob auf dem Bild ein Hund oder eine Katze zu sehen ist
+
+Hier: einfacheres Beispiel, nur zwei eingaben und zwei Ausgaben

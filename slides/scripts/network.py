@@ -41,3 +41,37 @@ class Scene(ThreeDScene):
         self.add(network_group.shift(DOWN * 0.9))
         self.add(text_group.shift(DOWN * 1.5))
         self.wait(1)
+
+        self.clear()
+        title = Title("Wie lernen Neuronale Netze?")
+        self.add(title)
+
+        self.wait(1)
+
+        inputs = Group()
+        c1 = Circle(radius=0.4, stroke_width=LINE_THICKNESS, color=RED)
+        c2 = Circle(radius=0.4, stroke_width=LINE_THICKNESS, color=RED).next_to(c1, RIGHT * 0.5)
+        inputs.add(Group(c1, c2))
+
+        c1 = Circle(radius=0.4, stroke_width=LINE_THICKNESS, color=RED, fill_opacity=1, fill_color=RED)
+        c2 = Circle(radius=0.4, stroke_width=LINE_THICKNESS, color=RED, fill_opacity=0, fill_color=RED).next_to(c1,
+                                                                                                                RIGHT * 0.5)
+        inputs.add(Group(c1, c2).next_to(inputs, RIGHT * 4))
+
+        c1 = Circle(radius=0.4, stroke_width=LINE_THICKNESS, color=RED, fill_opacity=0, fill_color=RED)
+        c2 = Circle(radius=0.4, stroke_width=LINE_THICKNESS, color=RED, fill_opacity=1, fill_color=RED).next_to(c1,
+                                                                                                                RIGHT * 0.5)
+        inputs.add(Group(c1, c2).next_to(inputs, RIGHT * 4))
+
+        c1 = Circle(radius=0.4, stroke_width=LINE_THICKNESS, color=RED, fill_opacity=1, fill_color=RED)
+        c2 = Circle(radius=0.4, stroke_width=LINE_THICKNESS, color=RED, fill_opacity=1, fill_color=RED).next_to(c1,
+                                                                                                                RIGHT * 0.5)
+        inputs.add(Group(c1, c2).next_to(inputs, RIGHT * 4))
+
+        self.add(inputs.center().shift(UP * 1.5))
+
+        self.wait(1)
+
+        self.add(network_group.shift(UP * 0.9))
+
+        self.wait(1)
