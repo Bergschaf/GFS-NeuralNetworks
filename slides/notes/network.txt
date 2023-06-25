@@ -1,0 +1,13 @@
+Hier sieht man die Netzstruktur von einem einfachen Neuronalen Netzwerk
+Jeder Kreis stellt ein Neuron dar
+Die Linien zwischen den Neuronen sind die Gewichtungen
+
+Die Neuronen ganz Links im Input Layer sind die Eingabeneuronen
+z.B. Pixel eines Bildes
+
+Die Hidden Layer sind das "Gehirn" des Netzwerks
+Der Input wird durch die Gewichtungen der Hidden Layer verarbeitet
+
+Die Neuronen ganz Rechts im Output Layer sind die Ausgabeneuronen
+z.B. die Wahrscheinlichkeit, dass das Bild eine Katze zeigt
+

@@ -145,21 +145,26 @@ class S0(Scene):
 
         axes = Axes(
             x_range=[-4, 4, 1],
-            y_range=[-0.75, 1.5, 0.5],
+            y_range=[-0.25, 1.5, 0.5],
             x_length=10,
-            y_length=4,
+            y_length=5,
             x_axis_config={"numbers_to_include": [-1, -2, 2, 1]},
             y_axis_config={"numbers_to_include": [1, 0.5]},
-        )
+        ).shift(DOWN * 1)
 
         plt = axes.plot(lambda x: 1 / (1 + np.exp(-x)), x_range=[-4, 4], color=BLUE)
         self.add(plt)
         self.add(axes)
 
+        self.wait(1)
+
+        # sigmoid derivative
+        plt2 = axes.plot(lambda x: (1 / (1 + np.exp(-x))) * (1 - (1 / (1 + np.exp(-x)))), x_range=[-4, 4], color=RED)
+        self.add(plt2)
 
         self.wait(1)
 
-        self.remove(axes, plt)
+        self.remove(axes, plt, plt2)
         main_group.shift(RIGHT * 15)
 
         self.wait(1)

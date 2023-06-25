@@ -9,6 +9,9 @@ STRUCTURE = [2, 4, 4, 2]
 
 class Scene(ThreeDScene):
     def construct(self):
+        title = Title("Netzwerk")
+        self.add(title)
+
         neurons_Group = Group()
         for i in range(len(STRUCTURE)):
             group = Group()
@@ -28,11 +31,13 @@ class Scene(ThreeDScene):
         neurons_Group[0].set_color(RED)
         neurons_Group[-1].set_color(BLUE)
 
-        network_group = Group(neurons_Group, weights_group).arrange(ORIGIN).shift(DOWN*0.6)
-        self.add(Text("Input\nLayer").to_edge(UP).set_x(neurons_Group[0].get_x()).set_color(RED))
-        self.add(Text("Hidden\nLayers").to_edge(UP).set_x(
-            (neurons_Group[1].get_x() + neurons_Group[2].get_x()) / 2).set_color(YELLOW))
-        self.add(Text("Ouput\nLayer").to_edge(UP).set_x(neurons_Group[-1].get_x()).set_color(BLUE))
-        self.add(network_group)
-        self.wait(1)
+        network_group = Group(neurons_Group, weights_group).arrange(ORIGIN).shift(DOWN * 0.6)
+        text_group = Group(Text("Input\nLayer").to_edge(UP).set_x(neurons_Group[0].get_x()).set_color(RED),
+                           Text("Hidden\nLayers").to_edge(UP).set_x(
+                               (neurons_Group[1].get_x() + neurons_Group[2].get_x()) / 2).set_color(YELLOW),
+                           Text("Ouput\nLayer").to_edge(UP).set_x(neurons_Group[-1].get_x()).set_color(BLUE)
+                           )
 
+        self.add(network_group.shift(DOWN * 0.9))
+        self.add(text_group.shift(DOWN * 1.5))
+        self.wait(1)
