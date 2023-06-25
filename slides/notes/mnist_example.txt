@@ -1,0 +1,30 @@
+Jetzt Beispiel für Trainingsprozess von einem Einfachen Neuronalen Netzwerk
+
+Ziel: Handgeschriebene Ziffern erkennen
+
+#---
+
+Bilder kommen aus dem MNIST Datenset
+öffentliches Datenset, dass oft für Machine Learning Beispiele verwendet wird
+enthält gelabelte Bilder von handgeschriebenen Ziffern
+
+....
+
+#---
+
+Netzwerkstruktur:
+Input Layer mit 28 * 28 = 784 Neuronen -> für jedes Pixel ein Neuron
+Zwei Hidden Layer mit 16 Neuronen
+Output Layer mit 10 Neuronen -> für jede Ziffer ein Neuron
+
+#---
+
+Vorhersage funktioniert dann so:
+
+Input Layer bekommt die Pixelwerte des Bildes
+Hidden Layer 1 berechnet aus den Pixelwerten eine erste Repräsentation des Bildes
+Hidden Layer 2 berechnet aus der ersten Repräsentation eine zweite Repräsentation des Bildes
+Output Layer berechnet aus der zweiten Repräsentation die Wahrscheinlichkeit für jede Ziffer
+
+#---
+
