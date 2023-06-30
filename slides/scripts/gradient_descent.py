@@ -11,8 +11,8 @@ POINTS = [
     (1, 0, 0.4),
     (0.2, 1, 0.2),
     (0.6, 0.35, 0.2),
-    (0.4, 0.55, -0.1),
-    (0.7, 0.3, 0.17)
+    (0.4, 0.55, -0.05), # -0.1),
+    (0.7, 0.3, 0.15)
 ]
 
 
@@ -34,18 +34,17 @@ def get_surface_cords(u, v):
 
 class S0(ThreeDScene):
     def construct(self):
-
-        self.begin_ambient_camera_rotation(rate = 0.5)
-        self.set_camera_orientation(phi=70 * DEGREES, theta=180 * DEGREES, zoom=2.5)
+        self.begin_ambient_camera_rotation(rate=0.5)
+        self.set_camera_orientation(phi=60 * DEGREES, theta=180 * DEGREES, zoom=2.5)
 
         graph = ThreeDAxes(x_range=[-4, 4], y_range=[-4, 4], z_range=[-4, 4], x_length=8, y_length=8, z_length=8)
-        #+self.add(graph)
+        # +self.add(graph)
         surface = Surface(
             lambda u, v: np.array([
                 u,  # x
                 v,  # y
                 surface_function(u, v)  # z
-            ]), resolution=(10,10)).scale(4)
+            ]), resolution=(10, 10)).scale(4)
         surface.set_fill_by_value(axis=2, colors=[(BLUE, -0.4), (GREEN, -0.10), (RED, 1)], axes=graph)
         self.add(surface)
         # position the surface at the origin
@@ -63,10 +62,33 @@ class S0(ThreeDScene):
         self.add(y_axis)
         self.add(y_axis_label)
 
-        #self.remove(surface)
+        # self.remove(surface)
+        self.wait(1)
+
+        global_minimum = Dot3D(get_surface_cords(0.4, 0.55), color=RED, radius=0.05)
+        global_minimum_label = Text("Globales Minimum", color=RED).scale(1).next_to(global_minimum, DOWN * 5)
+
+        self.add(global_minimum)
+        self.add_fixed_in_frame_mobjects(global_minimum_label)
+
+        self.wait(1)
+
+        local_minimum = Dot3D(get_surface_cords(0.7, 0.3), color=BLUE, radius=0.05)
+        local_minimum_label = Text("Lokales Minimum", color=BLUE).scale(1)
+        
+
+
+        self.add(local_minimum)
+        self.add_fixed_in_frame_mobjects(local_minimum_label)
+
         self.wait(1)
 
         point = Dot3D(get_surface_cords(0.67, 0.75), color=YELLOW, radius=0.05)
+        point_label = Text("Zufälliger Startpunkt", color=YELLOW).scale(1).next_to(point, DOWN * 5)
 
         self.add(point)
+        self.add_fixed_in_frame_mobjects(point_label)
+
         self.wait(1)
+
+
