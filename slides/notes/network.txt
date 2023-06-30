@@ -13,6 +13,7 @@ z.B. die Wahrscheinlichkeit, dass das Bild eine Katze zeigt
 
 #---
 
+Jetzt gebe ich einen intuitiven Überblick, was beim Training eines Neuronalen Netzwerks passiert
 Um ein Neuronales Netzwerk zu trainieren, müssen die Gewichtungen angepasst werden
 Die Gewichtungen sind anfangs zufällig -> Ausgaben sind zufällig
 
@@ -24,3 +25,50 @@ Dazu braucht man "Trainingsdaten" -> Eingaben in das Netz, bei denen man die erw
 z.B. Bilder, von denen man weiß, ob auf dem Bild ein Hund oder eine Katze zu sehen ist
 
 Hier: einfacheres Beispiel, nur zwei eingaben und zwei Ausgaben
+
+Oben: Eingaben
+Unten: Erwartete Ausgaben
+
+#---
+
+Am Anfang vom Training werden zufällige Gewichte verwendet
+
+#---
+
+Dann werden die Trainingsdaten durch das Netzwerk geschickt
+Die Helligkeit der Neuronen repräsentiert die Ausgabe des Neurons (zwischen 0 und 1)
+Anfangs sind die Ausgaben zufällig, vermutlich Werte zwischen 0 und 1 -> sigmoid Funktion
+
+#---
+
+Das wird dann für alle Trainingsdaten durchgeführt
+
+Man sieht, dass die Tatsächlichen Ausgaben von den Erwarteten Ausgaben abweichen
+
+#---
+Diese Abweichung wird als "Fehler" bezeichnet
+Diesen Fehler berechnet man als die Differenz zwischen den Erwarteten und den Tatsächlichen Ausgaben
+
+Diese Kreise Repräsentieren den Fehler der jeweiligen Neuronen
+
+Um den Fehler des ganzen Netzwerks zu bestimmen, wird der Fehler der einzelnen Neuronen für alle Trainingsbeispiele aufaddiert
+
+Wenn man den Fehler der einzelnen Neuronen kennt, dann kann man damit die Gewichte anpassen, sodass das Netz besser wird
+
+#---
+
+Dafür stellen wir uns ein Neuronales Netzwerk als Funktion vor
+
+Die Funktion nimmt eine Eingabe und gibt eine Ausgabe zurück
+
+Sie ist abhängig von den Gewichten
+
+#---
+
+Die Fehlerfunktion ist etwas abstrakter: Sie nimmt die Gewichte als Eingabe und gibt den Fehler als Ausgabe zurück
+Buchstabe C für fehler (Cost)
+#---
+
+Die Gewichte sind einfach mehrere Werte
+
+D.h. Die Fehlerfunktion ist eine Funktion von mehreren Variablen
