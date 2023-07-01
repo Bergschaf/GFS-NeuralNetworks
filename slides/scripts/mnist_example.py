@@ -99,3 +99,4 @@ class S0(Scene):
         self.add(right_brace)
 
         self.wait(1)
+

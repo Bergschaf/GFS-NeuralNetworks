@@ -44,7 +44,7 @@ class S0(ThreeDScene):
                 u,  # x
                 v,  # y
                 surface_function(u, v)  # z
-            ]), resolution=(10, 10)).scale(4)
+            ]), resolution=(50, 50)).scale(4)
         surface.set_fill_by_value(axis=2, colors=[(BLUE, -0.4), (GREEN, -0.10), (RED, 1)], axes=graph)
         self.add(surface)
         # position the surface at the origin
@@ -53,12 +53,12 @@ class S0(ThreeDScene):
         self.wait(1)
 
         x_axis = Arrow3D(LEFT * 2, RIGHT * 2).shift(UP * 2.2)
-        x_axis_label = Text("Param 1").scale(0.5).next_to(x_axis, UP * 0.5)
+        x_axis_label = MathTex("Paramter\\:x_0").scale(0.8).next_to(x_axis, UP * 0.2)
         self.add(x_axis)
         self.add(x_axis_label)
 
         y_axis = Arrow3D(UP * 2, DOWN * 2).shift(LEFT * 2.2)
-        y_axis_label = Text("Param 2").scale(0.5).rotate(-PI / 2).next_to(y_axis, LEFT * 0.5)
+        y_axis_label = MathTex("Paramter\\:x_1").scale(0.8).rotate(-PI / 2).next_to(y_axis, LEFT * 0.5)
         self.add(y_axis)
         self.add(y_axis_label)
 
@@ -79,16 +79,20 @@ class S0(ThreeDScene):
 
 
         self.add(local_minimum)
-        self.add_fixed_in_frame_mobjects(local_minimum_label)
+        self.add_fixed_in_frame_mobjects(local_minimum_label.shift(RIGHT * 2.5 + UP * 1.7))
 
         self.wait(1)
 
         point = Dot3D(get_surface_cords(0.67, 0.75), color=YELLOW, radius=0.05)
-        point_label = Text("Zufälliger Startpunkt", color=YELLOW).scale(1).next_to(point, DOWN * 5)
+        point_label = Text("Zufälliger Startpunkt", color=YELLOW).scale(1).shift(UP * 2.4 + LEFT * 2.5)
 
         self.add(point)
         self.add_fixed_in_frame_mobjects(point_label)
 
         self.wait(1)
+
+        self.remove(local_minimum_label, global_minimum_label, point_label)
+
+
 
 
