@@ -1,22 +1,39 @@
 #+title: Gfs
-#+BEGIN_SRC elisp
-(let ((image-files (directory-files "/path/to/your/directory" t "\\.jpg\\|\\.png\\|\\.gif$")))
-  (with-current-buffer (get-buffer-create "*Images*")
-    (erase-buffer)
-    (org-mode)
-    (dolist (file image-files)
-      (insert (format "[[file:%s]]\n" file)))
-    (org-display-inline-images)))
+#+BEGIN_SRC emacs-lisp :results output raw :cache no
+(with-current-buffer (current-buffer)
+  (save-excursion
+    (goto-char (point-min))
+    (let ((start nil) (end nil))
+      (when (search-forward "#+BEGIN_IMAGE_LIST#+END_IMAGE_LIST" nil t)
+          (setq end (match-beginning 0)))
+        (when (and start end)
+          (delete-region start end))))))
+(princ "#+BEGIN_IMAGE_LIST\n")
+(let ((image-files (directory-files "~/schule/christian/slides/assets" t "\\.jpg\\|\\.png\\|\\.gif$")))
+  (dolist (f image-files)
+    (princ (format "* %s\n[[file:%s]]\n" (file-name-nondirectory f) f))))
+(princ "#+END_IMAGE_LIST\n")
 #+END_SRC
-* start
-[[file:/home/niklas/schule/christian/slides/assets/DALLE.png]]
-[[file:/home/niklas/schule/christian/slides/assets/example_0.png]]
+
+#+RESULTS:
+#+BEGIN_IMAGE_LIST
+* example_1.png
 [[file:/home/niklas/schule/christian/slides/assets/example_1.png]]
+* example_2.png
 [[file:/home/niklas/schule/christian/slides/assets/example_2.png]]
+* example_3.png
 [[file:/home/niklas/schule/christian/slides/assets/example_3.png]]
+* example_4.png
 [[file:/home/niklas/schule/christian/slides/assets/example_4.png]]
+* example_5.png
 [[file:/home/niklas/schule/christian/slides/assets/example_5.png]]
+* example_6.png
 [[file:/home/niklas/schule/christian/slides/assets/example_6.png]]
+* example_7.png
 [[file:/home/niklas/schule/christian/slides/assets/example_7.png]]
+* example_8.png
 [[file:/home/niklas/schule/christian/slides/assets/example_8.png]]
+* example_9.png
 [[file:/home/niklas/schule/christian/slides/assets/example_9.png]]
+#+END_IMAGE_LIST
+jasdkf
