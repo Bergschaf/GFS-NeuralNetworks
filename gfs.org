@@ -1,0 +1,22 @@
+#+title: Gfs
+#+BEGIN_SRC elisp
+(let ((image-files (directory-files "/path/to/your/directory" t "\\.jpg\\|\\.png\\|\\.gif$")))
+  (with-current-buffer (get-buffer-create "*Images*")
+    (erase-buffer)
+    (org-mode)
+    (dolist (file image-files)
+      (insert (format "[[file:%s]]\n" file)))
+    (org-display-inline-images)))
+#+END_SRC
+* start
+[[file:/home/niklas/schule/christian/slides/assets/DALLE.png]]
+[[file:/home/niklas/schule/christian/slides/assets/example_0.png]]
+[[file:/home/niklas/schule/christian/slides/assets/example_1.png]]
+[[file:/home/niklas/schule/christian/slides/assets/example_2.png]]
+[[file:/home/niklas/schule/christian/slides/assets/example_3.png]]
+[[file:/home/niklas/schule/christian/slides/assets/example_4.png]]
+[[file:/home/niklas/schule/christian/slides/assets/example_5.png]]
+[[file:/home/niklas/schule/christian/slides/assets/example_6.png]]
+[[file:/home/niklas/schule/christian/slides/assets/example_7.png]]
+[[file:/home/niklas/schule/christian/slides/assets/example_8.png]]
+[[file:/home/niklas/schule/christian/slides/assets/example_9.png]]
