@@ -1,1 +1,62 @@
+Stellen wir uns diese Fehlerfunktion mit nur einem Parameter vor:
+
+Paramter auf der x Axe ist der Wert von einem Gewicht
+Die Funktion stellt den Fehler des Netzwerks dar, mit dem entsprechenden Wert des Gewichtes
+
+#---
+
+Funktion hat in diesem vereinfachten Fall zwei Tiefpunkte
+
+ein lokales Minimum und ein globales Minimum
+
+Ziel ist, den Wert für Paramter x zu finden, der den Fehler so klein wie Möglich macht
+-> Am besten das globale MMinum finden
+Diesen Prozess nennt man Gradientenabstieg
+
+#---
+
+Zuerst Zufälliger Wert für x
+
+#---
+
+nennen wir x0
+
+#---
+
+Dann berechnet man die Steigung der Fehlerfunktion an der Stelle x0
+
+in diesem fall ca. 3.71
+
+#---
+
+Wenn man diese Steigung mit -1 multipliziert erhält man die Richtung, die "bergab" auf dem Grafen entspricht
+
+#---
+
+Den nächsten x Wert der näher an einem Minumum liegt erhält man:
+
+indem man den Gradienten mit einer Lernrate n multipliziert und von x0 abzieht
+
+Lernrate steuert, wie groß die Schritte beim Gradientenabstieg sind
+Muss sorgfältig gewählt werden
+Wenn zu groß, dann wird man das Minimum überspringen
+Wenn zu klein, dann dauert der Prozess sehr lange
+
+#---
+
+Der neue x Wert x1 hat einen kleineren Fehler als x0 und ist näher am Minimum
+
+#---
+
+Auch bei diesem x-Wert wird die Steigung berechnet, in diesem Fall ca. 1.82
+
+#---
+
+#---
+
+Der nächste Schritt wird wieder berechnet, indem die Steigung mit der Lernrate multipliziert und von x1 abgezogen wird
+
+Dieser Prozess wird wiederholt, bis der Fehler nicht mehr weiter sinkt
+
+Dann hat man ein Minium gefunden
 

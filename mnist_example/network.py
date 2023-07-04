@@ -111,17 +111,17 @@ def train(epochs, train_data, train_labels, Weights, batch_size=100):
 
         for i in range(len(Weights)):
             Weights[i] += Avg_Weight_Deltas[i] * learning_rate
-        #print(epoch, get_network_error(train_data[:100], train_labels[:100], Weights))
-        print(epoch)
-        if epoch % 50 == 0:
+        # print(epoch, get_network_error(train_data[:100], train_labels[:100], Weights))
+        #print(epoch)
+        if epoch % 2 == 0:
             print(get_network_error(train_data[:1000], train_labels[:1000], Weights))
-            print(epoch)
-            for i in range(10):
-                print(get_prediction(train_data[i], Weights), train_labels[i])  #
+            #print(epoch)
+            #or i in range(10):
+            #   print(get_prediction(train_data[i], Weights), train_labels[i])  #
 
 
 def save(Weights, filename):
-    for  i in range(len(Weights)):
+    for i in range(len(Weights)):
         with open(filename + str(i), 'wb') as f:
             np.save(f, Weights[i])
 
@@ -132,7 +132,6 @@ def load(filename):
         with open(filename + str(i), 'rb') as f:
             new_weights.append(np.load(f))
     return new_weights
-
 
 
 if __name__ == '__main__':
