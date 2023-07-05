@@ -154,7 +154,7 @@ class S0(Scene):
 
         neuron_group.center()
 
-        net_calc = MathTex(r"net_{i}^0 = \sum_{k=1}^{n} w_{kj}^0 x_{k}").shift(DOWN * 2 + RIGHT * 2).scale(1.2)
+        net_calc = MathTex(r"net_{i}^0 = \sum_{k=1}^{n} w_{ki}^0 x_{k}").shift(DOWN * 2 + RIGHT * 2).scale(1.2)
         net_calc[0][:5].set_color(GREEN)
         net_calc[0][11:15].set_color(YELLOW)
 
@@ -265,7 +265,7 @@ class S0(Scene):
 
         self.add(neuron_group.scale(0.9).center())
 
-        net_calc = MathTex(r"net_{i}^L = \sum_{k=1}^{n} w_{kj}^L o_{k}^{L-1}").shift(DOWN * 2 + RIGHT * 2).scale(1.2)
+        net_calc = MathTex(r"net_{i}^L = \sum_{k=1}^{n} w_{ki}^L o_{k}^{L-1}").shift(DOWN * 2 + RIGHT * 2).scale(1.2)
         net_calc[0][:5].set_color(GREEN)
         net_calc[0][11:15].set_color(YELLOW)
         net_calc[0][15:20].set_color(BLUE)

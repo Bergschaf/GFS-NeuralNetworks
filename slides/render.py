@@ -49,7 +49,7 @@ for name in scripts_name:
     if not os.path.exists(os.path.join(IMAGES_DIR, name)):
         os.mkdir(os.path.join(IMAGES_DIR, name))
     os.system(
-        f"manim render {os.path.join(SCRIPTS_DIR, name)}.py --format png -o {os.path.join(IMAGES_DIR, name)}/Slide_ --fps 1 -q l S0")
+        f"manim render {os.path.join(SCRIPTS_DIR, name)}.py --format png -o {os.path.join(IMAGES_DIR, name)}/Slide_ --fps 1 -q h S0")
 
 #if os.path.exists(os.path.join(SLIDES_ROOT_DIR, "media")):
 #    os.system(f"rm -rf {os.path.join(SLIDES_ROOT_DIR, 'media')}")

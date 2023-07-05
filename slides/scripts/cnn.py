@@ -194,6 +194,7 @@ class S0(ThreeDSceneSquareGrid):
                 kernel.shift_grid(x_increment=-3, y_increment=-1)
                 self.wait(1)
 
+        self.wait(1)
         self.clear()
         self.add(title)
         # ------------------------------------------

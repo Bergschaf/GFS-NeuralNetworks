@@ -61,7 +61,7 @@ for i in range(len(slides)):
     for j in range(len(slides[i])):
         slides[i][j] = slides[i][j].resize((w, h), Image.LANCZOS)
         small_slides[i].append(slides[i][j].copy().resize((1920 // 2, 1080 // 2), Image.LANCZOS))
-        # very_small_slides[i].append(ImageTk.PhotoImage(slides[i][j].copy().resize((1920 // 8, 1080 // 8), Image.LANCZOS)))
+        very_small_slides[i].append(ImageTk.PhotoImage(slides[i][j].copy().resize((1920 // 3, 1080 // 3), Image.LANCZOS)))
 
 root.attributes('-fullscreen', True)
 root.configure(background='black')
@@ -89,6 +89,9 @@ img_label2.place(relx=0.0, rely=0.0, anchor=tk.NW)
 notes_label = tk.Label(canvas2, text="Notes", bg="black", fg="white", font=("Helvetica", 20), justify=tk.LEFT,
                        wraplength=500)
 notes_label.place(relx=0.9, rely=0.5, anchor=tk.E)
+
+img_label3 = tk.Label(canvas2, image=very_small_slides[0][0], bg="black")
+img_label3.place(relx=0.3, rely=0.75, anchor=tk.CENTER)
 
 
 def jump_to_slide(x, y):
@@ -126,9 +129,13 @@ def update_next_slide_notes():
     if next_slide_pos[0] >= len(slides):
         next_slide_pos = (0, 0)
 
-    i = ImageTk.PhotoImage(small_slides[next_slide_pos[0]][next_slide_pos[1]])
+    i = ImageTk.PhotoImage(small_slides[slides_pos[0]][slides_pos[1]])
     img_label2.configure(image=i)
     img_label2.image = i
+
+    i3 = very_small_slides[next_slide_pos[0]][next_slide_pos[1]]
+    img_label3.configure(image=i3)
+    img_label3.image = i3
 
     location_counter.configure(text=get_location_string(next_slide_pos[1], next_slide_pos[0]))
 
@@ -140,7 +147,7 @@ def update_next_slide_notes():
         notes_label.configure(text="No notes")
         return
 
-    notes_label.configure(text=notes[next_slide_pos[0]][next_slide_pos[1]])
+    notes_label.configure(text=notes[slides_pos[0]][slides_pos[1]])
 
 
 def next_slide(event):
@@ -203,9 +210,9 @@ root.bind("<space>", next_slide)
 root.bind("<Return>", prev_slide)
 
 # when right arrow is pressed, skip to next slide
-root.bind("<Right>", skip_right)
+root.bind("<Right>", next_slide)
 
 # when left arrow is pressed, skip to previous slide
-root.bind("<Left>", skip_left)
+root.bind("<Left>", prev_slide)
 
 root.mainloop()
