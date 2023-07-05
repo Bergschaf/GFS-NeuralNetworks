@@ -8,7 +8,7 @@ LINE_THICKNESS = 2
 STRUCTURE = [2, 4, 4, 2]
 
 
-class Scene(ThreeDScene):
+class S0(ThreeDScene):
     def construct(self):
         title = Title("Netzwerk")
         self.add(title)
